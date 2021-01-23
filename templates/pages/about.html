@@ -1,0 +1,124 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block title %} | About {% endblock %}
+
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">About ARG </h1>
+        <p class="lead">Dealer Partner Programs! Coming Soon & About Us</p>
+      </div>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active"> About</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section id="about" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h2>We Search For The Perfect Car</h2>
+        <img src="{% static 'img/about.jpg' %}" alt="">
+        <p class="mt-4">Are you interested in buying/selling cars, but frustrated with ALL the red tape to get your
+          dealers license? How many hoops will you need to jump through before the state decides to make a decision? I
+          speak from experience in that I, too, felt overwhelmed and disillusioned. All I wanted was to buy and sell
+          cars to make a living for my family. From this experience our company, Car Dealer License, was created. We
+          have been serving the Auto industry for over 15 years. With the increased profit potential in this business,
+          we are committed to make you a licensed Auto Dealer within just 3 days!!! Yes, that’s the Car Dealer License
+          promise.</p>
+      </div>
+      <div class="col-md-4">
+        {% if mvp_brokers %}
+        {% for brokers in mvp_brokers %}
+        <div class="card">
+          <img class="card-img-top" src="{{ brokers.photo.url }}" alt="Seller of the month">
+          <div class="card-body">
+            <h5 class="card-title">Seller Of The Month</h5>
+            <h6 class="text-secondary">{{ brokers.name }}</h6>
+            <p class="card-text">{{ brokers.description }}
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Work -->
+<section id="work" class="bg-dark text-white text-center">
+  <h2 class="display-4">Dealer Partner Programs</h2>
+  <section class=>
+    <h3 class="text-secondary">Unlimited Dealer Access License</h3>
+    <div class="card-body"></div>
+    <div class="content">
+      <h3> </h3>
+      <p class="card-text"><strong>$199 per Month</strong></p>
+      <ul>
+        <li>(Dealer Plate <strong>NOT</strong> Included)</li>
+        <li><em>Free Training</em></li>
+        <li><em>Nationwide Dealer Access</em></li>
+        <li><em>Access to Dealer Only Auctions</em></li>
+        <li><em>Month to Month(No Contract)</em></li>
+        <li><em>No Credit Check</em></li>
+        <li><em>No Bond Required</em></li>
+        <li><em>No State Classes Required</em></li>
+        <li><em>30 second approval</em></li>
+        <li><em>RETAIL to the public&nbsp;</em></li>
+        <li><del>$995 Start up</del> <strong>$495 with promo code</strong></li>
+        <li>Promo&nbsp;Code:<strong>&nbsp;#HalfOff<strong>&nbsp;exp Soon!<br> </strong></strong></li>
+      </ul>
+    </div>
+    </div>
+  </section>
+  <hr>
+  <a href="listings.html" class="btn btn-secondary text-white btn-lg">Feature Coming soon</a>
+</section>
+
+<!-- Team -->
+<section id="team" class="py-5">
+  <div class="container">
+    <h2 class="text-center">Our Team</h2>
+    <div class="row text-center">
+      {% if brokers %}
+      {% for brokers in brokers %}
+      <div class="col-md-4">
+        <img src="{{ brokers.photo.url }}" alt="" class="rounded-circle mb-3">
+        <h4>{{ brokers.name }}</h4>
+        <p class="text-success">
+          <i class="fas {% if realtor.is_mvp %} fa-award {% endif %} text-success mb-3"></i> brokers</p>
+        <hr>
+        <p>
+          <i class="fas fa-phone"></i> {{ brokers.phone }}</p>
+        <p>
+          <i class="fas fa-envelope-open"></i> {{ brokers.email }}</p>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="col-md-12">
+        <p>No Team members Available</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
