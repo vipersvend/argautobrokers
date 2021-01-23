@@ -25,7 +25,7 @@ SECRET_KEY = '!@r=vrm0z^985il$jeztmy1c!e-@8mjq2wf!$c2asq8n7lb1mk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://argautobrokers.herokuapp.com/']
 
 
 # Application definition
